@@ -83,6 +83,11 @@ The Conky configuration file `conkyrc` is already set up with various settings a
 
 Pending tasks are listed from the `tasks.md` file in the repository. Make sure to update this file with your tasks.
 
+## Shortcuts
+
+![Shortcuts] (shortcuts.png)
+Add manually your own shortcuts to use the play-pause, next previous sh scripts
+
 ## License
 
 This project is licensed under the MIT License. 
