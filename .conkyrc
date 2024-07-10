@@ -1,0 +1,104 @@
+conky.config = {
+   alignment = 'top_right',
+   background = true,
+   border_width = 10,
+   cpu_avg_samples = 1,
+   default_color = 'c5c8c6',
+   default_outline_color = 'c5c8c6',
+   default_shade_color = 'c5c8c6',
+   double_buffer = true,
+   draw_borders = false,
+   draw_graph_borders = true,
+   draw_outline = false,
+   draw_shades = false,
+   use_xft = true,
+   font = 'Exo 2:size=9:semibold',
+   gap_x = 14,
+   gap_y = 50,  -- Ajusté pour positionner le widget plus haut
+   imlib_cache_size = 10,
+   minimum_height = 2600,  -- Réduit pour éliminer l'espace vide en bas
+   minimum_width = 316,
+   maximum_width = 316,
+   net_avg_samples = 2,
+   no_buffers = true,
+   out_to_console = false,
+   out_to_stderr = false,
+   extra_newline = false,
+   own_window = true,
+   own_window_class = 'Conky',
+   own_window_colour = '1d1f21',
+   own_window_type = 'panel',
+   own_window_transparent = false,
+   own_window_argb_visual = true,
+   own_window_argb_value = 200,
+   own_window_hints = 'undecorated,skip_taskbar,skip_pager,below',
+   stippled_borders = 0,
+   short_units = false,
+   text_buffer_size = 512,
+   update_interval = 1,
+   uppercase = false,
+   use_spacer = 'none',
+   show_graph_scale = true,
+   show_graph_range = false
+}
+
+conky.text = [[
+### SYSTEM
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ SYSTEM :${color 8abeb7}: ${nodename}${color cc6666} ] ${voffset 2}${hr 2}${voffset 0}$color
+${voffset 2}${font Exo 2:semibold:size=11}${color 8abeb7}Kernel Version: ${voffset -3}${font Exo 2:light:size=13}${alignr}${color de935f}${kernel}
+${voffset 0}${font Exo 2:semibold:size=11}${color 8abeb7}System Uptime: ${voffset -3}${font Exo 2:light:size=13}${alignr}${color de935f}${uptime}%${font}
+
+### CPU
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ CPU ] ${voffset 2}${hr 2}${voffset 0}$color
+${image ~/Design/icons/intel-core-i7-logo.png -p 0,260 -s 72x50}${color 8abeb7}${voffset 5}${alignr}Intel® Core™ i7-6800K
+${voffset 5}${color b5bd68}${font Exo 2:light:size=20} ${cpu cpu0}% ${voffset 3}${alignr}${cpugraph 32,215} ${voffset -10}${alignr}
+${voffset -5}${color 777777}${stippled_hr}$color%${font}
+
+### TOP CPU PROCESSES
+${voffset 5}${color b4ebff}PROCESS (${processes}) ${goto 157}${color cc6666}CPU%${color b4ebff}${goto 220}MEM${alignr}PID
+${voffset -10}${color 777777}${stippled_hr}${voffset -2}
+${color 8abeb7}${top name 1} ${goto 150}${top cpu 1}%${goto 215}${top mem_res 1}${alignr}${top_mem pid 1}
+${color 33b5e5}${top name 2} ${goto 150}${top cpu 2}%${goto 215}${top mem_res 2}${alignr}${top_mem pid 2}
+${color 0099cc}${top name 3} ${goto 150}${top cpu 3}%${goto 215}${top mem_res 3}${alignr}${top_mem pid 3}
+${color 0099cc}${top name 4} ${goto 150}${top cpu 4}%${goto 215}${top mem_res 4}${alignr}${top_mem pid 4}
+${color 0099cc}${top name 5} ${goto 150}${top cpu 5}%${goto 215}${top mem_res 5}${alignr}${top_mem pid 5}
+
+### MEMORY
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ MEMORY ] ${voffset 2}${hr 2}${voffset 5}$color
+${goto 100}${color DAC0DE}${voffset -8}${font Exo 2:bold:size=20}${mem}${color B03BC3}${goto 230}${voffset 4}${memgauge 19,40} ${color DAC0DE}${voffset -4}${font Exo 2:bold:size=14}$memperc%
+${goto 111}${color de935f}${font Exo 2:bold:size=14} / ${memmax}$font${alignr}${membar 12,105}
+
+### Spotify
+${voffset 10}${font Exo 2:semibold}${color cc6666}[ SPOTIFY ] ${voffset 2}${hr 2}${voffset 5}$color
+${execpi 60 ~/.config/conky/cyrilWolfangel/conky-scripts/download_album_art.sh}
+${image /tmp/album_art.jpg -p 0,470 -s 70x70}
+${voffset -40}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Title: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata title | cut -c 1-30}
+${voffset 5}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Artist: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata artist | cut -c 1-30}
+${voffset 5}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Album: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata album | cut -c 1-30}
+${voffset 5}
+
+### RÉSEAU
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ RÉSEAU ] ${voffset 2}${hr 2}${voffset 5}$color
+${font Exo 2:semibold:size=11}${color 8abeb7}Adresse IP publique: ${font Exo 2:light:size=13}${alignr}${color b5bd68}${execi 60 curl -s https://ipinfo.io/ip}${color}
+${voffset 2}${font Exo 2:semibold:size=11}${color 8abeb7}Adresse IP locale: ${font Exo 2:light:size=13}${alignr}${color de935f}${addr eno1}
+
+### APPAREILS CONNECTES
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ APPAREILS CONNECTÉS ] ${voffset 2}${hr 2}${voffset 5}$color
+${font Exo 2:light:size=10}${color de935f}${execi 60 nmap -sn 192.168.1.0/24 | grep report | awk '{print $5, $6}'}
+
+### TACHES
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ TÂCHES ] ${voffset 2}${hr 2}${voffset 5}$color
+${font Exo 2:light:size=13}${color 8abeb7}${execi 5 grep -m 5 "^- \[ \]" "/home/cyril/.config/conky/cyrilWolfangel/tasks.md" | sed 's/- \[ \]/•/' | sed 's/^//' | cut -c 1-50}${color}
+
+### DISK
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ DISK ] (free) ${voffset 2}${hr 2}$color${font}
+${voffset 5}/ ${goto 140}R: ${goto 160}${color 33b5e5}${diskio_read /dev/mapper/AntergosVG-AntergosRoot}/s $color${alignr}${goto 240}W: ${color 33b5e5}${diskio_write /dev/mapper/AntergosVG-AntergosRoot}/s$color
+${voffset 2}${color 8abeb7}${fs_free /} Free (${color 33b5e5}${fs_free_perc /}%${color 8abeb7})$color   $alignr${color 33b5e5}${voffset 2}${fs_bar 10,150 /}$color
+
+### ETHERNET
+${voffset 5}${font Exo 2:semibold}${color cc6666}[ ETHERNET ]${voffset 3} ${hr 2}  $color
+${voffset 5}${font Exo 2:bold:size=10}Up: ${voffset -6}${goto 70}${color 8abeb7}${font Exo 2:size=15}${upspeed eno1}${font Exo 2:bold:size=10}/s $color ${goto 195}Total:  ${alignr}${voffset -6}${font Exo 2:size=15}${color 8abeb7}${totalup eno1}${color}${font}
+${voffset 5}${font Exo 2:bold:size=10}Down: ${voffset -6}${goto 70}${color 8abeb7}${font Exo 2:size=15}${downspeed eno1}${font Exo 2:bold:size=10}/s $color ${goto 195}Total:  ${alignr}${voffset -6}${font Exo 2:size=15}${color 8abeb7}${totaldown eno1}${color}${font}
+${color 777777}${stippled_hr}
+/// v${conky_version} (${conky_build_date})
+]]
