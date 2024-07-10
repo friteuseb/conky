@@ -85,7 +85,7 @@ Pending tasks are listed from the `tasks.md` file in the repository. Make sure t
 
 ## Shortcuts
 
-![Shortcuts] (shortcuts.png)
+![Shortcuts](shortcuts.png)
 Add manually your own shortcuts to use the play-pause, next previous sh scripts
 
 ## License
