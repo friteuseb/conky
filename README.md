@@ -2,6 +2,8 @@
 
 This repository contains a customized Conky configuration and various scripts to enhance your Conky experience.
 
+![Conky Skin](conky_skin_cyrilWolfangel.png)
+
 ## Features
 
 - **System Information**: Displays kernel version, system uptime, CPU usage, and top CPU processes.
