@@ -1,0 +1,78 @@
+conky.config = {
+    alignment = 'top_right',
+    background = true,
+    double_buffer = true,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=10',
+    gap_x = 20,
+    gap_y = 60,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 70,  -- 0-255, 0 is fully transparent, 255 is fully opaque
+    own_window_color = '000000',  -- Black color
+    stippled_borders = 0,
+    update_interval = 3.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false,
+}
+
+conky.text = [[
+${alignc}${font DejaVu Sans Mono:bold:size=12}${time %H:%M:%S}${font}
+${alignc}${font DejaVu Sans Mono:bold:size=10}${time %A, %d %B %Y}${font}
+
+${font DejaVu Sans Mono:bold:size=10}Uptime:${font} ${uptime}
+
+${font DejaVu Sans Mono:bold:size=10}CPU Usage:${font} ${cpu}% ${cpubar 4,100}
+${font DejaVu Sans Mono:bold:size=10}RAM Usage:${font} ${mem} / ${memmax} ${membar 4,100}
+${font DejaVu Sans Mono:bold:size=10}Swap Usage:${font} ${swap} / ${swapmax} ${swapbar 4,100}
+
+${font DejaVu Sans Mono:bold:size=10}Processes:${font} ${processes} ${font}Running:${font} ${running_processes}
+
+${font DejaVu Sans Mono:bold:size=10}File systems:${font}
+ / ${fs_used /} / ${fs_size /} ${fs_bar 4,100}
+
+${font DejaVu Sans Mono:bold:size=10}Disk Usage:${font}
+ /home ${fs_used /home} / ${fs_size /home} ${fs_bar 4,100 /home}
+
+${font DejaVu Sans Mono:bold:size=10}Networking:${font}
+ Up: ${goto 50}${upspeed wlp2s0} ${goto 120}Down: ${downspeed wlp2s0}
+ 
+${font DejaVu Sans Mono:bold:size=10}Local IP:${font} ${addr wlp2s0}
+${font DejaVu Sans Mono:bold:size=10}Public IP:${font} ${execi 3600 curl -s ifconfig.me}
+
+${font DejaVu Sans Mono:bold:size=10}Battery:${font} ${battery_percent BAT0}% ${battery_bar 4,100 BAT0}
+
+${font DejaVu Sans Mono:bold:size=10}Top 5 CPU Processes:${font}
+${top name 1} ${top cpu 1}%
+${top name 2} ${top cpu 2}%
+${top name 3} ${top cpu 3}%
+${top name 4} ${top cpu 4}%
+${top name 5} ${top cpu 5}%
+
+${font DejaVu Sans Mono:bold:size=10}Top 5 RAM Processes:${font}
+${top_mem name 1} ${top_mem mem 1}%
+${top_mem name 2} ${top_mem mem 2}%
+${top_mem name 3} ${top_mem mem 3}%
+${top_mem name 4} ${top_mem mem 4}%
+${top_mem name 5} ${top_mem mem 5}%
+]]
