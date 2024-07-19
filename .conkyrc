@@ -69,7 +69,7 @@ ${goto 100}${color DAC0DE}${voffset -8}${font Exo 2:bold:size=20}${mem}${color B
 ${goto 111}${color de935f}${font Exo 2:bold:size=14} / ${memmax}$font${alignr}${membar 12,105}
 
 ### Spotify
-${voffset 10}${font Exo 2:semibold}${color cc6666}[ SPOTIFY ] ${voffset 2}${hr 2}${voffset 5}$color
+${voffset 10}${font Exo 2:semibold}${color cc6666}[ SPOTIFY - ncspot ] ${voffset 2}${hr 2}${voffset 5}$color
 ${execpi 60 ~/.config/conky/cyrilWolfangel/conky-scripts/download_album_art.sh}
 ${image /tmp/album_art.jpg -p 0,470 -s 70x70}
 ${voffset -40}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Title: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata title | cut -c 1-30}
