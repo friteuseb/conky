@@ -50,8 +50,8 @@ ${voffset 0}${font Exo 2:semibold:size=11}${color 8abeb7}System Uptime: ${voffse
 
 ### CPU
 ${voffset 5}${font Exo 2:semibold}${color cc6666}[ CPU ] ${voffset 2}${hr 2}${voffset 0}$color
-${image ~/Design/icons/intel-core-i7-logo.png -p 0,260 -s 72x50}${color 8abeb7}${voffset 5}${alignr}Intel® Core™ i7-6800K
-${voffset 5}${color b5bd68}${font Exo 2:light:size=20} ${cpu cpu0}% ${voffset 3}${alignr}${cpugraph 32,215} ${voffset -10}${alignr}
+${color 8abeb7}${voffset 5}${alignr}AMD® Ryzen 9 6900hx
+${voffset 5}${color b5bd68}${font Exo 2:light:size=20}${cpu cpu0}% ${voffset 3}${alignr}${cpugraph cpu0 32,215} ${voffset -10}${alignr}
 ${voffset -5}${color 777777}${stippled_hr}$color%${font}
 
 ### TOP CPU PROCESSES
@@ -75,20 +75,20 @@ ${image /tmp/album_art.jpg -p 0,470 -s 70x70}
 ${voffset -40}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Title: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata title | cut -c 1-30}
 ${voffset 5}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Artist: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata artist | cut -c 1-30}
 ${voffset 5}${goto 90}${font Exo 2:semibold:size=9}${color 8abeb7}Album: ${font Exo 2:light:size=9}${alignr}${color de935f}${execi 5 playerctl --player=ncspot metadata album | cut -c 1-30}
-${voffset 5}
+${voffset 20}${font Exo 2:light:size=8}${color 8abeb7}Next: ${color de935f}Ctrl+Alt+N ${goto 120}${color 8abeb7}Prev: ${color de935f}Ctrl+Alt+P ${goto 220}${color 8abeb7}Play/Pause: ${color de935f}Ctrl+Space
 
 ### RÉSEAU
-${voffset 5}${font Exo 2:semibold}${color cc6666}[ RÉSEAU ] ${voffset 2}${hr 2}${voffset 5}$color
+${voffset 3}${font Exo 2:semibold}${color cc6666}[ RÉSEAU ] ${voffset 2}${hr 2}${voffset 5}$color
 ${font Exo 2:semibold:size=11}${color 8abeb7}Adresse IP publique: ${font Exo 2:light:size=13}${alignr}${color b5bd68}${execi 60 curl -s https://ipinfo.io/ip}${color}
 ${voffset 2}${font Exo 2:semibold:size=11}${color 8abeb7}Adresse IP locale: ${font Exo 2:light:size=13}${alignr}${color de935f}${addr eno1}
 
 ### APPAREILS CONNECTES
-${voffset 5}${font Exo 2:semibold}${color cc6666}[ APPAREILS CONNECTÉS ] ${voffset 2}${hr 2}${voffset 5}$color
+${voffset 3}${font Exo 2:semibold}${color cc6666}[ APPAREILS CONNECTÉS ] ${voffset 2}${hr 2}${voffset 5}$color
 ${font Exo 2:light:size=10}${color de935f}${execi 60 nmap -sn 192.168.1.0/24 | grep report | awk '{print $5, $6}'}
 
 ### TACHES
 ${voffset 5}${font Exo 2:semibold}${color cc6666}[ TÂCHES ] ${voffset 2}${hr 2}${voffset 5}$color
-${font Exo 2:light:size=13}${color 8abeb7}${execi 5 grep -m 5 "^- \[ \]" "/home/cyril/.config/conky/cyrilWolfangel/tasks.md" | sed 's/- \[ \]/•/' | sed 's/^//' | cut -c 1-50}${color}
+${font Exo 2:light:size=13}${color 8abeb7}${execi 8 grep -m 8 "^- \[ \]" "/home/cyril/.config/conky/cyrilWolfangel/tasks.md" | sed 's/- \[ \]/•/' | sed 's/^//' | cut -c 1-50}${color}
 
 ### DISK
 ${voffset 5}${font Exo 2:semibold}${color cc6666}[ DISK ] (free) ${voffset 2}${hr 2}$color${font}
